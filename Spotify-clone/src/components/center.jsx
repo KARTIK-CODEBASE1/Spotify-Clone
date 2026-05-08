@@ -8,30 +8,15 @@ const footerSection = {
   content: [
     {
       heading: 'Company',
-      items: [
-        'About',
-        'Jobs',
-        'For the Record',
-      ],
+      items: ['About', 'Jobs', 'For the Record'],
     },
     {
       heading: 'Communities',
-      items: [
-        'For Artists',
-        'Developers',
-        'Advertising',
-        'Investors',
-        'Vendors',
-      ],
+      items: ['For Artists', 'Developers', 'Advertising', 'Investors', 'Vendors'],
     },
     {
       heading: 'Useful Links',
-      items: [
-        'Support',
-        'Free Mobile App',
-        'Popular by Country',
-        'Import your music',
-      ],
+      items: ['Support', 'Free Mobile App', 'Popular by Country', 'Import your music'],
     },
     {
       heading: 'Spotify Plans',
@@ -86,7 +71,7 @@ function CenterBar() {
                 <h3 className="text-base font-bold text-white">{group.heading}</h3>
                 <div className="mt-4 space-y-2 text-sm">
                   {group.items.map((item) => (
-                    <p className="cursor-pointer hover:text-white" key={item}>
+                    <p key={item} className="cursor-pointer hover:text-white">
                       {item}
                     </p>
                   ))}
