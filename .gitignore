@@ -12,6 +12,8 @@
 /Spotify-clone/*.local
 
 # Logs
+/vite-dev.err.log*
+/vite-dev.log*
 /Spotify-clone/logs
 /Spotify-clone/*.log
 /Spotify-clone/npm-debug.log*
