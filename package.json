@@ -1,0 +1,10 @@
+{
+  "name": "spotify-root",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix Spotify-clone",
+    "build": "npm run build --prefix Spotify-clone",
+    "lint": "npm run lint --prefix Spotify-clone",
+    "preview": "npm run preview --prefix Spotify-clone"
+  }
+}

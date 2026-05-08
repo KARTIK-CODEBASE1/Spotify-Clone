@@ -1,0 +1,161 @@
+import { useState } from 'react'
+
+const shortcutKeys = ['Ctrl', 'Shift', 'L']
+const iconFilter = { filter: 'brightness(0) invert(1)' }
+
+function Navbar() {
+  const [searchQuery, setSearchQuery] = useState('')
+  const showClearButton = searchQuery.trim() !== ''
+  const showShortcuts = !showClearButton
+
+  return (
+    <header className="px-2 py-2">
+      <nav className="flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-black px-2 py-2">
+        <div className="flex flex-wrap items-center gap-3">
+          <img
+            className="h-8 w-8 shrink-0"
+            style={iconFilter}
+            src="/navbar-elements/spotify-logo.svg"
+            alt="Spotify"
+          />
+          <button
+            type="button"
+            aria-label="Home"
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#1f1f1f] transition duration-200 hover:bg-[#2b2b2b]"
+          >
+            <img
+              className="h-6 w-6"
+              style={iconFilter}
+              src="/navbar-elements/home-solid-svgrepo-com.svg"
+              alt=""
+            />
+          </button>
+
+          <div className="group/search flex h-12 min-w-0 flex-1 items-center gap-3 rounded-full border border-transparent bg-[#1f1f1f] px-4 transition duration-200 hover:bg-[#2b2b2b] focus-within:border-[#5a5a5a] focus-within:bg-[#2b2b2b] sm:min-w-[320px] lg:w-[560px]">
+            <button
+              type="button"
+              aria-label="Search"
+              className="flex shrink-0 items-center justify-center"
+            >
+              <img
+                className="h-[26px] w-[26px] opacity-70 transition duration-200 group-hover/search:opacity-100 group-focus-within/search:opacity-100"
+                style={iconFilter}
+                src="/navbar-elements/search-icon.svg"
+                alt=""
+              />
+            </button>
+
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder="What do you want to play?"
+              aria-label="What do you want to play?"
+              className="min-w-0 flex-1 bg-transparent text-base font-medium text-white outline-none placeholder:text-[#b3b3b3] [&::-webkit-search-cancel-button]:appearance-none"
+            />
+
+            {showShortcuts ? (
+              <div
+                aria-hidden="true"
+                className="ml-auto hidden items-center gap-1.5 group-hover/search:flex group-focus-within/search:flex"
+              >
+                {shortcutKeys.map((key) => (
+                  <span
+                    key={key}
+                    className="inline-flex h-7 min-w-8 items-center justify-center rounded-md border border-[#727272] px-2 text-xs text-[#e6e6e6]"
+                  >
+                    {key}
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <button
+                type="button"
+                aria-label="Clear search"
+                onClick={() => setSearchQuery('')}
+                className="flex shrink-0 items-center justify-center"
+              >
+                <img
+                  className="h-[26px] w-[26px] opacity-90 transition duration-200 hover:scale-[1.05]"
+                  style={iconFilter}
+                  src="/navbar-elements/close-icon.svg"
+                  alt=""
+                />
+              </button>
+            )}
+
+            <div className="h-6 w-px shrink-0 bg-[#727272]" aria-hidden="true" />
+
+            <button
+              type="button"
+              aria-label="Browse"
+              className="flex shrink-0 items-center justify-center"
+            >
+              <img
+                className="h-[26px] w-[26px] opacity-70 transition duration-200 cursor-pointer hover:scale-[1.05] hover:opacity-100 group-focus-within/search:opacity-100"
+                style={iconFilter}
+                src="/navbar-elements/browse-icon.svg"
+                alt=""
+              />
+            </button>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-5 text-sm font-bold text-[#b3b3b3]">
+          <button
+            type="button"
+            className="transition duration-200 hover:text-white"
+          >
+            Premium
+          </button>
+
+          <button
+            type="button"
+            className="transition duration-200 hover:text-white"
+          >
+            Support
+          </button>
+
+          <button
+            type="button"
+            className="transition duration-200 hover:text-white"
+          >
+            Download
+          </button>
+
+          
+          <div className="hidden h-8 w-px bg-[#2a2a2a] lg:block" aria-hidden="true" />
+          
+          <button
+            type="button"
+            className="flex items-center gap-2 transition duration-200 hover:text-white"
+          >
+            <img
+              className="h-5 w-5"
+              style={iconFilter}
+              src="/navbar-elements/install-option-svgrepo-com.svg"
+              alt=""
+            />
+            <span>Install App</span>
+          </button>
+
+          <button
+            type="button"
+            className="transition duration-200 hover:text-white"
+          >
+            Sign up
+          </button>
+
+          <button
+            type="button"
+            className="rounded-full bg-white px-8 py-3 text-base font-bold text-black transition duration-200 hover:scale-[1.02]"
+          >
+            Log in
+          </button>
+        </div>
+      </nav>
+    </header>
+  )
+}
+
+export default Navbar
