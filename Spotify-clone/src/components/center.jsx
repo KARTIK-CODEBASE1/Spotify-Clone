@@ -42,12 +42,12 @@ const songSections = [
 const artistSection = {
   title: 'Popular artists',
   items: [
-    { name: 'Pritam', accent: 'from-[#5a4947] to-[#1b1b1b]' },
-    { name: 'Arijit Singh', accent: 'from-[#3fa4d2] to-[#20304a]' },
-    { name: 'Anirudh Ravichander', accent: 'from-[#ffbb74] to-[#bd5d2e]' },
-    { name: 'Vishal-Shekhar', accent: 'from-[#d7d8de] to-[#64646e]' },
-    { name: 'Sachin-Jigar', accent: 'from-[#9b8c86] to-[#2e2a28]' },
-    { name: 'Atif Aslam', accent: 'from-[#f6f6f6] to-[#7d7d7d]' },
+    { name: 'Bad Bunny', image: '/Artist-cover/badbunny.webp', accent: 'from-[#8f8f8f] to-[#2f2f2f]' },
+    { name: 'Taylor Swift', image: '/Artist-cover/taylor_swift.webp', accent: 'from-[#3fa4d2] to-[#20304a]' },
+    { name: 'The Weeknd', image: '/Artist-cover/theWeeknd.webp', accent: 'from-[#ffbb74] to-[#bd5d2e]' },
+    { name: 'Drake', image: '/Artist-cover/Drake.jpg', accent: 'from-[#d7d8de] to-[#64646e]' },
+    { name: 'Billie Eilish', image: '/Artist-cover/billie_eilish.webp', accent: 'from-[#9b8c86] to-[#2e2a28]' },
+    { name: 'Kendrick Lamar', image: '/Artist-cover/kendrick_lamar.webp', accent: 'from-[#f6f6f6] to-[#7d7d7d]' },
   ],
 }
 
@@ -158,7 +158,7 @@ function CenterBar() {
                       <button
                         type="button"
                         aria-label={`Play ${song.title}`}
-                        className="absolute bottom-3 right-3 flex h-14 w-14 translate-y-4 items-center justify-center rounded-full bg-[#1ed760]  text-black opacity-0 shadow-[0_12px_24px_rgba(0,0,0,0.35)] transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+                        className="absolute hover:scale-[1.03] cursor-pointer bottom-3 right-3 flex h-14 w-14 translate-y-4 items-center justify-center rounded-full bg-[#1ed760]  text-black opacity-0 shadow-[0_12px_24px_rgba(0,0,0,0.35)] transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"
                       >
                         <span className="ml-1">▶</span>
                       </button>
@@ -205,18 +205,14 @@ function CenterBar() {
                     <div
                       className={`aspect-square overflow-hidden rounded-full bg-gradient-to-br ${artist.accent} shadow-[0_18px_36px_rgba(0,0,0,0.34)]`}
                     >
-                      <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.24),transparent_45%)] text-5xl font-black text-white">
-                        {getInitials(artist.name)}
-                      </div>
+                      {artist.image ? (
+                        <img
+                          src={artist.image}
+                          alt={artist.name}
+                          className="h-full w-full object-cover"
+                        />
+                      ) : null}
                     </div>
-
-                    <button
-                      type="button"
-                      aria-label={`Play ${artist.name}`}
-                      className="absolute bottom-3 right-3 flex h-14 w-14 translate-y-4 items-center justify-center rounded-full bg-[#1ed760] text-xl text-black opacity-0 shadow-[0_12px_24px_rgba(0,0,0,0.35)] transition duration-300 group-hover:translate-y-0 group-hover:opacity-100"
-                    >
-                      <span className="ml-1">▶</span>
-                    </button>
                   </div>
 
                   <h3 className="mt-4 text-2xl font-bold text-white">{artist.name}</h3>
@@ -231,9 +227,9 @@ function CenterBar() {
             {footerSection.content.map((group) => (
               <div key={group.heading}>
                 <h3 className="text-base font-bold text-white">{group.heading}</h3>
-                <div className="mt-4 space-y-2 text-sm">
+                <div className="mt-4 space-y-2 text-sm ">
                   {group.items.map((item) => (
-                    <p key={item}>{item}</p>
+                    <p className='hover:text-white cursor-pointer' key={item}>{item}</p>
                   ))}
                 </div>
               </div>
