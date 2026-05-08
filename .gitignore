@@ -1,1 +1,32 @@
+# Root files
 /package.json
+
+# Spotify-clone project
+/Spotify-clone/package.json
+/Spotify-clone/package-lock.json
+/Spotify-clone/eslint.config.js
+/Spotify-clone/vite.config.js
+/Spotify-clone/node_modules/
+/Spotify-clone/dist/
+/Spotify-clone/dist-ssr/
+/Spotify-clone/*.local
+
+# Logs
+/Spotify-clone/logs
+/Spotify-clone/*.log
+/Spotify-clone/npm-debug.log*
+/Spotify-clone/yarn-debug.log*
+/Spotify-clone/yarn-error.log*
+/Spotify-clone/pnpm-debug.log*
+/Spotify-clone/lerna-debug.log*
+
+# Editor directories and files
+/Spotify-clone/.vscode/*
+!/Spotify-clone/.vscode/extensions.json
+/Spotify-clone/.idea
+/Spotify-clone/.DS_Store
+/Spotify-clone/*.suo
+/Spotify-clone/*.ntvs*
+/Spotify-clone/*.njsproj
+/Spotify-clone/*.sln
+/Spotify-clone/*.sw?
