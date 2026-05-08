@@ -1,4 +1,5 @@
 import { useState } from 'react'
+const iconFilter = { filter: 'brightness(0) invert(1)' }
 
 const songSections = [
   {
@@ -13,7 +14,6 @@ const songSections = [
         title: 'Boom Shaka',
         subtitle: 'KR$NA, Dhanda Nyoliwala',
         accent: 'from-[#4f4f4f] via-[#181818] to-[#000000]',
-        tag: 'E',
       },
       {
         title: 'Aitbaar (From "Chand Mera Dil")',
@@ -53,24 +53,44 @@ const artistSection = {
 
 const footerSection = {
   content: [
-    sec1 = {
+    {
       heading: 'Company',
       items: [
         'About',
         'Jobs',
-        'For the Record'
-      ]
+        'For the Record',
+      ],
     },
-    sec2 = {
+    {
       heading: 'Communities',
       items: [
         'For Artists',
         'Developers',
         'Advertising',
-        'Investors'
+        'Investors',
+        'Vendors',
+      ],
+    },
+    {
+      heading: 'Useful Links',
+      items: [
+        'Support',
+        'Free Mobile App',
+        'Popular by Country',
+        'Import your music',
       ]
     },
-  ]
+    {
+      heading: 'Spotify Plans',
+      items: [
+        'Premium Lite',
+        'Premium Standard',
+        'Premium Platinum',
+        'Premium Student',
+        'Spotify Free',
+      ]
+    }
+  ],
 }
 
 function getInitials(name) {
@@ -90,9 +110,8 @@ function CenterBar() {
       className="relative min-h-0  overflow-y-auto rounded-xl bg-[#121212]"
     >
       <div
-        className={`pointer-events-none sticky top-0 z-0 h-0 transition-opacity duration-300 ${
-          isScrolled ? 'opacity-100' : 'opacity-90'
-        }`}
+        className={`pointer-events-none sticky top-0 z-0 h-0 transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-90'
+          }`}
         aria-hidden="true"
       >
         <div className="h-64 bg-[linear-gradient(180deg,rgba(75,51,136,0.95)_0%,rgba(49,36,89,0.82)_42%,rgba(18,18,18,0)_100%)]" />
@@ -100,11 +119,10 @@ function CenterBar() {
 
       <div className="relative z-10 px-5 pb-10">
         <div
-          className={`sticky top-0 z-20 -mx-5 px-5 pb-4 pt-5 transition-colors duration-300 ${
-            isScrolled
+          className={`sticky top-0 z-20 -mx-5 px-5 pb-4 pt-5 transition-colors duration-300 ${isScrolled
               ? 'bg-[rgba(69,48,122,0.96)] backdrop-blur-sm'
               : 'bg-transparent'
-          }`}
+            }`}
         >
           <div className="h-4" />
         </div>
@@ -134,9 +152,7 @@ function CenterBar() {
                       <div
                         className={`aspect-square overflow-hidden rounded-md bg-gradient-to-br ${song.accent} shadow-[0_18px_36px_rgba(0,0,0,0.34)]`}
                       >
-                        <div className="flex h-full w-full items-end justify-start bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(0,0,0,0.35))] p-4">
-
-                        </div>
+                        <div className="flex h-full w-full items-end justify-start bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(0,0,0,0.35))] p-4" />
                       </div>
 
                       <button
@@ -210,12 +226,64 @@ function CenterBar() {
             </div>
           </section>
         </div>
-        <footer>
-        <section>
-          <div className="hidden h-px w-full mt-9 bg-[#2a2a2a] lg:block" aria-hidden="true" />
-          
-          <div className="hidden h-px w-full mt-9 bg-[#2a2a2a] lg:block" aria-hidden="true" />
-        </section>
+        <footer className="mt-20 border-t border-[#2a2a2a] text-[#b3b3b3]">
+          <section className="grid gap-x-6 gap-y-8 pt-10 sm:grid-cols-2 lg:grid-cols-5">
+            {footerSection.content.map((group) => (
+              <div key={group.heading}>
+                <h3 className="text-base font-bold text-white">{group.heading}</h3>
+                <div className="mt-4 space-y-2 text-sm">
+                  {group.items.map((item) => (
+                    <p key={item}>{item}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div className="flex gap-4">
+              <button
+                type="button"
+                aria-label="Instagram"
+                className="flex h-10 w-10 gap-1 font-bold text-sm shrink-0 items-center justify-center rounded-full bg-[#1f1f1f] transition duration-200 hover:bg-[#2a2a2a]"
+              >
+                <img
+                  className="h-5 w-5"
+                  style={iconFilter}
+                  src="/center-elements/instagram-svgrepo-com.svg"
+                  alt=""
+                />
+              </button>
+
+              <button
+                type="button"
+                aria-label="Twitter"
+                className="flex h-10 w-10 gap-1 font-bold text-sm shrink-0 items-center justify-center rounded-full bg-[#1f1f1f] transition duration-200 hover:bg-[#2a2a2a]"
+              >
+                <img
+                  className="h-4 w-4"
+                  style={iconFilter}
+                  src="/center-elements/twitter-social-logotype-svgrepo-com.svg"
+                  alt=""
+                />
+              </button>
+
+              <button
+                type="button"
+                aria-label="Facebook"
+                className="flex h-10 w-10 gap-1 font-bold text-sm shrink-0 items-center justify-center rounded-full bg-[#1f1f1f] transition duration-200 hover:bg-[#2a2a2a]"
+              >
+                <img
+                  className="h-5 w-5"
+                  style={iconFilter}
+                  src="/center-elements/facebook-svgrepo-com.svg"
+                  alt=""
+                />
+              </button>
+            </div>
+          </section>
+          <footer className="mt-8 border-t border-[#2a2a2a] text-[#b3b3b3]">
+              <div className='mt-7 text-sm'>
+                ©2026 Spotify-Clone
+              </div>
+          </footer>
         </footer>
       </div>
     </main>

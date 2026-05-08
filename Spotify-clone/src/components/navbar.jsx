@@ -13,7 +13,7 @@ function Navbar() {
       <nav className="flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-black px-2 py-2">
         <div className="flex flex-wrap items-center gap-3">
           <img
-            className="h-8 w-8 shrink-0"
+            className="h-12 w-12 shrink-0"
             style={iconFilter}
             src="/navbar-elements/spotify-logo.svg"
             alt="Spotify"

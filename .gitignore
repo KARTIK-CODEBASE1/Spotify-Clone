@@ -19,6 +19,8 @@
 /Spotify-clone/yarn-error.log*
 /Spotify-clone/pnpm-debug.log*
 /Spotify-clone/lerna-debug.log*
+/Spotify-clone/vite-dev.err.log*
+/Spotify-clone/vite-dev.log*
 
 # Editor directories and files
 /Spotify-clone/.vscode/*
