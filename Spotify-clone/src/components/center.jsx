@@ -40,23 +40,21 @@ function CenterBar() {
       className="relative min-h-0 overflow-y-auto rounded-xl bg-[#121212]"
     >
       <div
-        className={`pointer-events-none sticky top-0 z-0 h-0 transition-opacity duration-300 ${
-          isScrolled ? 'opacity-100' : 'opacity-90'
-        }`}
+        className={`pointer-events-none sticky top-0 z-0 h-0 transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-90'
+          }`}
         aria-hidden="true"
       >
+
         <div className="h-64 bg-[linear-gradient(180deg,rgba(75,51,136,0.95)_0%,rgba(49,36,89,0.82)_42%,rgba(18,18,18,0)_100%)]" />
       </div>
 
       <div className="relative z-10 px-5 pb-10">
         <div
-          className={`sticky top-0 z-20 -mx-5 px-5 pb-4 pt-5 transition-colors duration-300 ${
-            isScrolled
-              ? 'bg-[rgba(69,48,122,0.96)] backdrop-blur-sm'
+          className={`sticky top-0 z-20 -mx-5 px-5 pb-4 pt-5 transition-colors duration-300 ${isScrolled
+              ? 'bg-[rgba(69,48,122,0.5)] backdrop-blur-sm'
               : 'bg-transparent'
-          }`}
+            }`}
         >
-          <div className="h-4" />
         </div>
 
         <div className="space-y-14">
@@ -65,7 +63,7 @@ function CenterBar() {
         </div>
 
         <footer className="mt-20 border-t border-[#2a2a2a] text-[#b3b3b3]">
-          <section className="grid gap-x-6 gap-y-8 pt-10 sm:grid-cols-2 lg:grid-cols-5">
+          <section className="grid gap-x-6 gap-y-8 pt-10  lg:grid-cols-5">
             {footerSection.content.map((group) => (
               <div key={group.heading}>
                 <h3 className="text-base font-bold text-white">{group.heading}</h3>

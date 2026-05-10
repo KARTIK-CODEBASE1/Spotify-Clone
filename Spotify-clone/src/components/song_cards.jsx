@@ -3,35 +3,65 @@ const songSections = [
     title: 'Trending songs',
     items: [
       {
-        title: 'WOW (From "Hai Jawani Toh Ishq Hona...")',
-        subtitle: 'Harrdy Sandhu, Tanishk Bagchi, Kiran Bajwa, Gill...',
+        title: 'DRAKE - WHAT DID I MISS',
+        artist: 'Drake',
         accent: 'from-[#1774ff] via-[#00a6ff] to-[#1d2f8f]',
       },
       {
-        title: 'Boom Shaka',
-        subtitle: 'KR$NA, Dhanda Nyoliwala',
+        title: 'Billie Eilish, Khalid - lovely',
+        artist: 'Billie Eilish',
         accent: 'from-[#4f4f4f] via-[#181818] to-[#000000]',
       },
       {
-        title: 'Aitbaar (From "Chand Mera Dil")',
-        subtitle: 'Sachin-Jigar, Faheem Abdullah, Amitabh...',
+        title: 'Money Trees',
+        artist: 'Kendrick Lamar',
         accent: 'from-[#ffcf8c] via-[#b57d58] to-[#28435f]',
       },
       {
-        title: 'Inaam (Ft. Badshah)',
-        subtitle: 'Jasleen Royal, Badshah, Ansh Chahal',
+        title: 'BAD BUNNY x JHAY CORTEZ - DÁKITI',
+        artist: 'Bad Bunny',
         accent: 'from-[#f0bf60] via-[#8f5d48] to-[#3f2639]',
       },
       {
-        title: 'Dil Waale Chor (From "Pati Patni Aur Woh...")',
-        subtitle: 'Rochak Kohli, Shreya Ghoshal, Aditya Rikhari,...',
+        title: 'Taylor Swift - Shake It Off',
+        artist: 'Taylor Swift',
         accent: 'from-[#f7a7f7] via-[#eb6fb6] to-[#f0b85d]',
       },
       {
-        title: 'Top Fella',
-        subtitle: 'Karan Aujla, Mxrci',
+        title: 'The Weeknd - Blinding Lights',
+        artist: 'The Weeknd',
         accent: 'from-[#625b4f] via-[#211d1a] to-[#090909]',
       },
+      {
+        title: 'The Kill 2',
+        artist: 'Lex Amarni',
+        accent: 'from-[#1774ff] via-[#00a6ff] to-[#1d2f8f]',
+      },
+      {
+        title: 'Under Your Spell',
+        artist: 'Snow Strippers',
+        accent: 'from-[#4f4f4f] via-[#181818] to-[#000000]',
+      },
+      {
+        title: 'Ice - Super Slowed',
+        artist: 'ZERTAL',
+        accent: 'from-[#ffcf8c] via-[#b57d58] to-[#28435f]',
+      },
+      {
+        title: 'Love on me - Jtbazz',
+        artist: 'Jtbazz',
+        accent: 'from-[#abcf5c] via-[#d57d58] to-[#58635f]',
+      },
+      {
+        title: 'No-Pole',
+        artist: 'Don Toliver',
+        accent: 'from-[#625b4f] via-[#211d1a] to-[#090909]',
+      },
+      {
+        title: 'ODETARI - KEEP UP',
+        artist: 'Odetari',
+        accent: 'from-[#4f4f4f] via-[#181818] to-[#000000]',
+      }
     ],
   },
 ]
@@ -71,7 +101,7 @@ function SongCards() {
                   >
                     <div className="flex h-full w-full items-end justify-start bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(0,0,0,0.35))] p-4" />
                   </div>
-  
+
                   <button
                     type="button"
                     aria-label={`Play ${song.title}`}
@@ -96,24 +126,29 @@ function SongCards() {
                   </button>
                 </div>
 
-                <h3 className="mt-3 line-clamp-2 text-1xl font-bold text-white">
-                  {song.title}
-                </h3>
+                <div className="flex flex-col justify-center min-w-0">
 
-                <div className="mt-2 flex items-start gap-2 text-l text-[#b3b3b3]">
-                  {song.tag ? (
-                    <span className="mt-1 inline-flex h-6 min-w-6 items-center justify-center rounded bg-[#b3b3b3] px-1 text-sm font-bold text-[#121212]">
-                      {song.tag}
-                    </span>
-                  ) : null}
-                  <p className="line-clamp-2">{song.subtitle}</p>
+                  <h3 className="line-clamp-2 text-sm font-bold text-white md:mt-3 md:text-xl">
+                    {song.title}
+                  </h3>
+
+                  <div className="mt-1 flex items-start gap-2 text-sm text-[#b3b3b3] md:mt-2 md:text-base">
+                    {song.tag ? (
+                      <span className="mt-1 inline-flex h-6 min-w-6 items-center justify-center rounded bg-[#b3b3b3] px-1 text-sm font-bold text-[#121212]">
+                        {song.tag}
+                      </span>
+                    ) : null}
+
+                    <p className="line-clamp-2">{song.artist}</p>
+                  </div>
+
                 </div>
               </article>
             ))}
-        </div>
+          </div>
         </section >
       ))
-}
+      }
     </>
   )
 }

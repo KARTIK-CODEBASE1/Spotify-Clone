@@ -10,14 +10,22 @@ function Navbar() {
 
   return (
     <header className="px-2 py-2">
-      <nav className="flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-black px-2 py-2">
-        <div className="flex flex-wrap items-center gap-3">
-          <img
-            className="h-12 w-12 shrink-0"
-            style={iconFilter}
-            src="/navbar-elements/spotify-logo.svg"
-            alt="Spotify"
-          />
+      <nav className="flex flex-wrap items-center justify-between ">
+        <div className="flex flex-wrap items-center gap-4">
+
+          <div className="flex items-center gap-1">
+            <img
+              className="h-12 w-12 shrink-0"
+              style={iconFilter}
+              src="/navbar-elements/spotify-logo.svg"
+              alt="Spotify"
+            />
+
+            <span className="font-black tracking-tight md:hidden">
+              Spotify
+            </span>
+          </div>
+
           <button
             type="button"
             aria-label="Home"
@@ -31,7 +39,7 @@ function Navbar() {
             />
           </button>
 
-          <div className="group/search flex h-12 min-w-0 flex-1 items-center gap-3 rounded-full border border-transparent bg-[#1f1f1f] px-4 transition duration-200 hover:bg-[#2b2b2b] focus-within:border-[#5a5a5a] focus-within:bg-[#2b2b2b] sm:min-w-[320px] lg:w-[560px]">
+          <div className="group/search hidden md:flex flex h-12 min-w-0 flex-1 items-center gap-3 rounded-full border border-transparent bg-[#1f1f1f] px-4 transition duration-200 hover:bg-[#2b2b2b] focus-within:border-[#5a5a5a] focus-within:bg-[#2b2b2b] sm:min-w-[320px] lg:w-[560px]">
             <button
               type="button"
               aria-label="Search"
@@ -51,7 +59,7 @@ function Navbar() {
               onChange={(event) => setSearchQuery(event.target.value)}
               placeholder="What do you want to play?"
               aria-label="What do you want to play?"
-              className="min-w-0 flex-1 bg-transparent text-base font-medium text-white outline-none placeholder:text-[#b3b3b3] [&::-webkit-search-cancel-button]:appearance-none"
+              className="min-w-0  flex-1 bg-transparent text-base font-medium text-white outline-none placeholder:text-[#b3b3b3] [&::-webkit-search-cancel-button]:appearance-none"
             />
 
             {showShortcuts ? (
@@ -123,9 +131,9 @@ function Navbar() {
             Download
           </button>
 
-          
-          <div className="hidden h-8 w-px bg-[#2a2a2a] lg:block" aria-hidden="true" />
-          
+
+          <div className="hidden h-6 w-[2px] bg-white lg:block" aria-hidden="true" />
+
           <button
             type="button"
             className="flex items-center gap-2 transition duration-200 hover:text-white"
@@ -148,11 +156,34 @@ function Navbar() {
 
           <button
             type="button"
-            className="rounded-full bg-white px-8 py-3 text-base font-bold text-black transition duration-200 hover:scale-[1.02]"
+            className="rounded-full bg-white px-8 py-2 text-base font-bold text-black transition duration-200 hover:scale-[1.02]"
           >
             Log in
           </button>
         </div>
+        <div className="flex items-center gap-6 md:hidden">
+
+          <button
+            type="button"
+            className="rounded-full bg-white px-3 py-0.5 text-base font-bold text-black"
+          >
+            Open App
+          </button>
+
+          <button
+            type="button"
+            aria-label="Open menu"
+          >
+            <img
+              className="h-6 w-6 shrink-0"
+              style={iconFilter}
+              src="/navbar-elements/hamburger-svgrepo-com.svg"
+              alt=""
+            />
+          </button>
+
+        </div>
+
       </nav>
     </header>
   )
