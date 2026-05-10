@@ -21,7 +21,7 @@ function Navbar() {
           <button
             type="button"
             aria-label="Home"
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#1f1f1f] transition duration-200 hover:bg-[#2b2b2b]"
+            className=" hidden md:flex flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#1f1f1f] transition duration-200 hover:bg-[#2b2b2b]"
           >
             <img
               className="h-6 w-6"
@@ -101,7 +101,7 @@ function Navbar() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-5 text-sm font-bold text-[#b3b3b3]">
+        <div className="flex hidden md:flex flex-wrap items-center gap-5 text-sm  font-bold text-[#b3b3b3]">
           <button
             type="button"
             className="transition duration-200 hover:text-white"

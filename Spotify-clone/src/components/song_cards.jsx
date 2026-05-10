@@ -53,25 +53,46 @@ function SongCards() {
             </button>
           </div>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">
+          <div className="mt-8 grid gap-4 grid-cols-1 xl:grid-cols-3 2xl:grid-cols-6">
             {section.items.map((song) => (
               <article
                 key={song.title}
-                className="group rounded-xl p-3 transition duration-200 hover:bg-[rgba(255,255,255,0.06)]"
+                className="group flex flex-row gap-3 rounded-xl p-3 transition duration-200 hover:bg-[rgba(255,255,255,0.06)] md:flex-col"
               >
                 <div className="relative">
                   <div
-                    className={`aspect-square overflow-hidden rounded-md bg-gradient-to-br ${song.accent} shadow-[0_18px_36px_rgba(0,0,0,0.34)]`}
+                    className={`
+                      h-16 w-16 shrink-0
+                      md:h-auto md:w-auto
+                      md:aspect-square 
+                      overflow-hidden rounded-md 
+                      bg-gradient-to-br ${song.accent} 
+                      shadow-[0_18px_36px_rgba(0,0,0,0.34)]`}
                   >
                     <div className="flex h-full w-full items-end justify-start bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(0,0,0,0.35))] p-4" />
                   </div>
-
+  
                   <button
                     type="button"
                     aria-label={`Play ${song.title}`}
-                    className="absolute bottom-3 right-3 flex h-14 w-14 translate-y-4 cursor-pointer items-center justify-center rounded-full bg-[#1ed760] text-black opacity-0 shadow-[0_12px_24px_rgba(0,0,0,0.35)] transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:scale-[1.03]"
+                    className="
+                            absolute bottom-3 right-3
+                            hidden md:flex
+                            h-14 w-14
+                            translate-y-4
+                            cursor-pointer
+                            items-center justify-center 
+                            rounded-full 
+                            bg-[#1ed760] 
+                            text-black 
+                            opacity-0 
+                            shadow-[0_12px_24px_rgba(0,0,0,0.35)] 
+                            transition duration-300 
+                            group-hover:translate-y-0 
+                            group-hover:opacity-100 
+                            hover:scale-[1.03]"
                   >
-                    <span className="ml-1 ">▶</span>
+                    <span className="ml-1">▶</span>
                   </button>
                 </div>
 
@@ -89,9 +110,10 @@ function SongCards() {
                 </div>
               </article>
             ))}
-          </div>
-        </section>
-      ))}
+        </div>
+        </section >
+      ))
+}
     </>
   )
 }

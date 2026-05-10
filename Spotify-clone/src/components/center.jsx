@@ -112,7 +112,7 @@ function CenterBar() {
                 className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1f1f1f] text-sm font-bold transition duration-200 hover:bg-[#2a2a2a]"
               >
                 <img
-                  className="h-5 w-5"
+                  className="h-7 w-7"
                   style={iconFilter}
                   src="/center-elements/facebook-svgrepo-com.svg"
                   alt=""
@@ -122,7 +122,7 @@ function CenterBar() {
           </section>
 
           <div className="mt-8 border-t border-[#2a2a2a] pt-7 text-sm">
-            Spotify-Clone 2026
+            © Spotify-Clone 2026
           </div>
         </footer>
       </div>

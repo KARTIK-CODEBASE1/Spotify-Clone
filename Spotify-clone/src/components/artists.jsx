@@ -13,19 +13,13 @@ const artistSection = {
 function Artists() {
   return (
     <section>
-      <div className="flex items-end justify-between gap-4">
+      <div className="flex items-end justify-between gap-4 ">
         <h2 className="text-2xl font-extrabold tracking-tight text-white">
           {artistSection.title}
         </h2>
-        <button
-          type="button"
-          className="pt-3 font-bold text-[#b3b3b3] transition duration-200 hover:text-white"
-        >
-          Show all
-        </button>
       </div>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">
+      <div className="mt-8 grid gap-3 grid-cols-2 md:grid-cols-3 xl:grid-cols-6 ">
         {artistSection.items.map((artist) => (
           <article
             key={artist.name}
