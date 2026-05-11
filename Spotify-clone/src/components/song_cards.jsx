@@ -1,3 +1,4 @@
+const [showAll, setShowAll] = useState(false)
 const songSections = [
   {
     title: 'Trending songs',
@@ -84,7 +85,7 @@ function SongCards() {
           </div>
 
           <div className="mt-8 grid gap-4 grid-cols-1 xl:grid-cols-3 2xl:grid-cols-6">
-            {section.items.map((song) => (
+            {(showAll ? section.items : section.items.slice(0,6)).map((song) => (
               <article
                 key={song.title}
                 className="group flex flex-row gap-3 rounded-xl p-3 transition duration-200 hover:bg-[rgba(255,255,255,0.06)] md:flex-col"

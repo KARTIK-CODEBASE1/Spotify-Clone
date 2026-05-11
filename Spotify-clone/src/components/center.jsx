@@ -4,6 +4,7 @@ import SongCards from './song_cards'
 
 const iconFilter = { filter: 'brightness(0) invert(1)' }
 
+
 const footerSection = {
   content: [
     {
