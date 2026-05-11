@@ -36,7 +36,7 @@ function LeftSidebar() {
             <img
               className="h-5 w-5"
               style={iconFilter}
-              src="/sidebar-elements/plus-large-svgrepo-com.svg"
+              src="/Svg/sidebar-elements/plus-large-svgrepo-com.svg"
               alt=""
             /><span>Create</span>
           </button>
@@ -77,7 +77,7 @@ function LeftSidebar() {
             <img
               className="h-5 w-5"
               style={iconFilter}
-              src="/sidebar-elements/world-svgrepo-com.svg"
+              src="/Svg/sidebar-elements/world-svgrepo-com.svg"
               alt=""
             />
             <span>English</span>

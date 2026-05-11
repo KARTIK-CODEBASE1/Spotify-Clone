@@ -87,7 +87,7 @@ function CenterBar() {
                 <img
                   className="h-5 w-5"
                   style={iconFilter}
-                  src="/center-elements/instagram-svgrepo-com.svg"
+                  src="/Svg/center-elements/instagram-svgrepo-com.svg"
                   alt=""
                 />
               </button>
@@ -100,7 +100,7 @@ function CenterBar() {
                 <img
                   className="h-4 w-4"
                   style={iconFilter}
-                  src="/center-elements/twitter-social-logotype-svgrepo-com.svg"
+                  src="/Svg/center-elements/twitter-social-logotype-svgrepo-com.svg"
                   alt=""
                 />
               </button>
@@ -113,7 +113,7 @@ function CenterBar() {
                 <img
                   className="h-7 w-7"
                   style={iconFilter}
-                  src="/center-elements/facebook-svgrepo-com.svg"
+                  src="/Svg/center-elements/facebook-svgrepo-com.svg"
                   alt=""
                 />
               </button>

@@ -1,16 +1,32 @@
+import { useRef, useState } from 'react'
+
 const artistSection = {
   title: 'Popular artists',
   items: [
-    { name: 'Bad Bunny', image: '/Artist-cover/badbunny.webp', accent: 'from-[#8f8f8f] to-[#2f2f2f]' },
-    { name: 'Taylor Swift', image: '/Artist-cover/taylor_swift.webp', accent: 'from-[#3fa4d2] to-[#20304a]' },
-    { name: 'The Weeknd', image: '/Artist-cover/theWeeknd.webp', accent: 'from-[#ffbb74] to-[#bd5d2e]' },
-    { name: 'Drake', image: '/Artist-cover/Drake.jpg', accent: 'from-[#d7d8de] to-[#64646e]' },
-    { name: 'Billie Eilish', image: '/Artist-cover/billie_eilish.webp', accent: 'from-[#9b8c86] to-[#2e2a28]' },
-    { name: 'Kendrick Lamar', image: '/Artist-cover/kendrick_lamar.webp', accent: 'from-[#f6f6f6] to-[#7d7d7d]' },
+    { name: 'Bad Bunny', image: '/Artist-cover/badbunny.webp', audio: '/music/bad-bunny.mp3'},
+    { name: 'Taylor Swift', image: '/Artist-cover/taylor_swift.webp', audio: '/music/taylor-swift.mp3'},
+    { name: 'The Weeknd', image: '/Artist-cover/theWeeknd.webp',audio: '/music/blinding-lights.mp3'},
+    { name: 'Drake', image: '/Artist-cover/Drake.jpg', audio: '/music/drake-what-did-i-miss.mp3'},
+    { name: 'Billie Eilish', image: '/Artist-cover/billie_eilish.webp', audio: '/music/billie-eilish.mp3'},
+    { name: 'Kendrick Lamar', image: '/Artist-cover/kendrick_lamar.webp',audio: '/music/kendrick-lamar.mp3'},
   ],
 }
 
 function Artists() {
+  const [currentSong, setCurrentSong] = useState(null)
+    const [isPlaying, setIsPlaying] = useState(false)
+  
+    const audioRef = useRef(null)
+  
+    const playSong = (song) => {
+      setCurrentSong(song)
+  
+      audioRef.current.src = song.audio
+  
+      audioRef.current.play()
+  
+      setIsPlaying(true)
+    }
   return (
     <section>
       <div className="flex items-end justify-between gap-4 ">
@@ -27,12 +43,24 @@ function Artists() {
           >
             <div className="relative">
               <div
-                className={`aspect-square overflow-hidden rounded-full bg-gradient-to-br ${artist.accent} shadow-[0_18px_36px_rgba(0,0,0,0.34)]`}
+                className={`
+                      aspect-square
+                      overflow-hidden
+                      rounded-full
+                      border-2
+                      border-transparent
+                      shadow-[0_18px_36px_rgba(0,0,0,0.34)]
+                      transition duration-200
+                      group-hover:border-white
+                      cursor-pointer
+                  `}
               >
                 {artist.image ? (
                   <img
+                    onClick={() => playSong(artist)}
                     src={artist.image}
                     alt={artist.name}
+
                     className="h-full w-full object-cover"
                   />
                 ) : null}
@@ -44,8 +72,10 @@ function Artists() {
           </article>
         ))}
       </div>
+      <audio ref={audioRef} />
     </section>
+    
   )
-}
+ }
 
 export default Artists

@@ -30,7 +30,7 @@ function Navbar() {
             <img
               className="h-12 w-12 shrink-0"
               style={iconFilter}
-              src="/navbar-elements/spotify-logo.svg"
+              src="/Svg/navbar-elements/spotify-logo.svg"
               alt="Spotify"
             />
 
@@ -47,7 +47,7 @@ function Navbar() {
             <img
               className="h-6 w-6"
               style={iconFilter}
-              src="/navbar-elements/home-solid-svgrepo-com.svg"
+              src="/Svg/navbar-elements/home-solid-svgrepo-com.svg"
               alt=""
             />
           </button>
@@ -61,7 +61,7 @@ function Navbar() {
               <img
                 className="h-[26px] w-[26px] opacity-70 transition duration-200 group-hover/search:opacity-100 group-focus-within/search:opacity-100"
                 style={iconFilter}
-                src="/navbar-elements/search-icon.svg"
+                src="/Svg/navbar-elements/search-icon.svg"
                 alt=""
               />
             </button>
@@ -99,7 +99,7 @@ function Navbar() {
                 <img
                   className="h-[26px] w-[26px] opacity-90 transition duration-200 hover:scale-[1.05]"
                   style={iconFilter}
-                  src="/navbar-elements/close-icon.svg"
+                  src="/Svg/navbar-elements/close-icon.svg"
                   alt=""
                 />
               </button>
@@ -115,7 +115,7 @@ function Navbar() {
               <img
                 className="h-[26px] w-[26px] opacity-70 transition duration-200 cursor-pointer hover:scale-[1.05] hover:opacity-100 group-focus-within/search:opacity-100"
                 style={iconFilter}
-                src="/navbar-elements/browse-icon.svg"
+                src="/Svg/navbar-elements/browse-icon.svg"
                 alt=""
               />
             </button>
@@ -154,7 +154,7 @@ function Navbar() {
             <img
               className="h-5 w-5"
               style={iconFilter}
-              src="/navbar-elements/install-option-svgrepo-com.svg"
+              src="/Svg/navbar-elements/install-option-svgrepo-com.svg"
               alt=""
             />
             <span>Install App</span>
@@ -178,6 +178,12 @@ function Navbar() {
 
           <button
             type="button"
+            onClick={() =>
+              window.open(
+                'https://play.google.com/store/apps/details?id=com.spotify.music',
+                '_blank'
+              )
+            }
             className="rounded-full bg-white px-3 py-0.5 text-base font-bold text-black"
           >
             Open App
@@ -191,7 +197,7 @@ function Navbar() {
             <img
               className="h-6 w-6 shrink-0"
               style={iconFilter}
-              src="/navbar-elements/hamburger-svgrepo-com.svg"
+              src="/Svg/navbar-elements/hamburger-svgrepo-com.svg"
               alt=""
             />
           </button>
@@ -223,7 +229,7 @@ function Navbar() {
                 <img
                   className="h-8 w-8 mt-2 mr-5 shrink-0 "
                   style={iconFilter}
-                  src="/navbar-elements/close-icon.svg"
+                  src="/Svg/navbar-elements/close-icon.svg"
                   alt=""
                 />
 
