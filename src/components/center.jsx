@@ -64,7 +64,7 @@ function CenterBar() {
           <div className="h-64 bg-[linear-gradient(180deg,rgba(75,51,136,0.95)_0%,rgba(49,36,89,0.82)_42%,rgba(18,18,18,0)_100%)]" />
         </div>
 
-        <div className="relative z-10 px-5 pb-10">
+        <div className="relative z-10 px-5 pb-32">
           <div
             className={`sticky top-0 z-20 -mx-5 px-5 pb-4 pt-5 transition-colors duration-300 ${isScrolled
               ? 'bg-[rgba(69,48,122,0.5)] backdrop-blur-sm'
@@ -142,7 +142,12 @@ function CenterBar() {
         </div>
         <audio ref={audioRef} />
       </main>
-      <PlayerBar />
+      <PlayerBar 
+        currentSong = {currentSong}
+        isPlaying = {isPlaying}
+        setIsPlaying = {setIsPlaying}
+        audioRef = {audioRef}
+      />
     </div>
   )
 }
