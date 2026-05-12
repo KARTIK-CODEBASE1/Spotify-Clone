@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import {useState } from 'react'
 
 const songSections = [
   {
@@ -80,23 +80,10 @@ const songSections = [
   },
 ]
 
-function SongCards() {
+function SongCards({playSong}) {
   const [showAll, setShowAll] = useState(false)
 
-  const [currentSong, setCurrentSong] = useState(null)
-  const [isPlaying, setIsPlaying] = useState(false)
-
-  const audioRef = useRef(null)
-
-  const playSong = (song) => {
-    setCurrentSong(song)
-
-    audioRef.current.src = song.audio
-
-    audioRef.current.play()
-
-    setIsPlaying(true)
-  }
+  
 
   return (
     <>
@@ -185,7 +172,7 @@ function SongCards() {
         </section>
       ))}
 
-      <audio ref={audioRef} />
+      
     </>
   )
 }

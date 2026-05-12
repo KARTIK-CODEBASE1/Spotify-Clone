@@ -2,6 +2,7 @@ import LeftSidebar from './components/leftSidebar'
 import Navbar from './components/navbar'
 import CenterBar from './components/center'
 
+
 function App() {
   return (
     <div className="flex h-dvh flex-col overflow-hidden bg-black text-white">

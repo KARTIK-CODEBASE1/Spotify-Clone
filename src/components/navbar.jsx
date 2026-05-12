@@ -19,7 +19,7 @@ function Navbar() {
   const [searchQuery, setSearchQuery] = useState('')
   const showClearButton = searchQuery.trim() !== ''
   const showShortcuts = !showClearButton
-  const [isMenueOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
     <header className="px-2 py-2">
@@ -203,7 +203,7 @@ function Navbar() {
           </button>
 
           {
-            isMenueOpen && (
+            isMenuOpen && (
               <div className='fixed inset-0 z-40 bg-black/70'
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -218,7 +218,7 @@ function Navbar() {
               bg-[#121212]
               z-50
               transform transition-transform duration-300
-              ${isMenueOpen ? 'translate-x-0' : 'translate-x-full'}
+              ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}
               `}
           >
             <div className='flex justify-end'>

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import {useState } from 'react'
 
 const artistSection = {
   title: 'Popular artists',
@@ -12,21 +12,9 @@ const artistSection = {
   ],
 }
 
-function Artists() {
-  const [currentSong, setCurrentSong] = useState(null)
-    const [isPlaying, setIsPlaying] = useState(false)
-  
-    const audioRef = useRef(null)
-  
-    const playSong = (song) => {
-      setCurrentSong(song)
-  
-      audioRef.current.src = song.audio
-  
-      audioRef.current.play()
-  
-      setIsPlaying(true)
-    }
+function Artists({playSong}) {
+
+    
   return (
     <section>
       <div className="flex items-end justify-between gap-4 ">
@@ -72,7 +60,6 @@ function Artists() {
           </article>
         ))}
       </div>
-      <audio ref={audioRef} />
     </section>
     
   )
