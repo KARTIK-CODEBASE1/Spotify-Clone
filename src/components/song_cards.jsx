@@ -114,7 +114,13 @@ function SongCards({playSong}) {
               >
                 <div className="relative">
                   <div
-                    onClick={() => playSong(song)}
+                    onClick={(event) => {
+
+                      event.stopPropagation()
+
+                      playSong(song)
+                      
+                    }}
                     className="
                       h-16 w-16 shrink-0
                       cursor-pointer

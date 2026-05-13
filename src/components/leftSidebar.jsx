@@ -43,7 +43,7 @@ function LeftSidebar() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-hidden px-1 pb-5">
+      <div className="flex-1 overflow-hidden px-1 pb-72">
         <div className="space-y-2">
           {libraryCards.map((card) => (
             <article

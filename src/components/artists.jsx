@@ -45,7 +45,14 @@ function Artists({playSong}) {
               >
                 {artist.image ? (
                   <img
-                    onClick={() => playSong(artist)}
+                    onClick={(event) => {
+
+                      event.stopPropagation()
+
+                      playSong(song)
+                    
+                    }}
+
                     src={artist.image}
                     alt={artist.name}
 

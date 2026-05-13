@@ -39,21 +39,38 @@ function CenterBar() {
   const [currentSong, setCurrentSong] = useState(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef(null)
+  const [currentTime, setCurrentTime] = useState(0)
+  const [duration, setDuration] = useState(0)
+  const [isPlayerOpen, setIsPlayerOpen] = useState(false)
 
   const playSong = (song) => {
     setCurrentSong(song)
     audioRef.current.src = song.audio
     audioRef.current.play()
     setIsPlaying(true)
+    setIsPlayerOpen(true)
 
   }
 
+  const closePlayer = () =>{
+
+    audioRef.current.pause()
+
+    setIsPlaying(false)
+
+    setIsPlayerOpen(false)
+  }
+
   return (
-    <div className="relative flex h-screen flex-col">
+    <div 
+      className="relative flex h-screen flex-col"
+      
+      >
 
       <main
         onScroll={(event) => setIsScrolled(event.currentTarget.scrollTop > 24)}
         className="relative flex-1 min-h-0 overflow-y-auto rounded-xl bg-[#121212]"
+        onClick={closePlayer}
       >
         <div
           className={`pointer-events-none sticky top-0 z-0 h-0 transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-90'
@@ -93,11 +110,11 @@ function CenterBar() {
                 </div>
               ))}
 
-              <div className="flex gap-4">
+              <div className="flex gap-4 ">
                 <button
                   type="button"
                   aria-label="Instagram"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1f1f1f] text-sm font-bold transition duration-200 hover:bg-[#2a2a2a]"
+                  className="flex h-10 cursor-pointer w-10 shrink-0 items-center justify-center rounded-full bg-[#1f1f1f] text-sm font-bold transition duration-200 hover:bg-[#2a2a2a]"
                 >
                   <img
                     className="h-5 w-5"
@@ -110,7 +127,7 @@ function CenterBar() {
                 <button
                   type="button"
                   aria-label="Twitter"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1f1f1f] text-sm font-bold transition duration-200 hover:bg-[#2a2a2a]"
+                  className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1f1f1f] text-sm font-bold transition duration-200 hover:bg-[#2a2a2a]"
                 >
                   <img
                     className="h-4 w-4"
@@ -123,7 +140,7 @@ function CenterBar() {
                 <button
                   type="button"
                   aria-label="Facebook"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1f1f1f] text-sm font-bold transition duration-200 hover:bg-[#2a2a2a]"
+                  className="flex h-10 w-10 shrink-0 items-center cursor-pointer justify-center rounded-full bg-[#1f1f1f] text-sm font-bold transition duration-200 hover:bg-[#2a2a2a]"
                 >
                   <img
                     className="h-7 w-7"
@@ -140,14 +157,26 @@ function CenterBar() {
             </div>
           </footer>
         </div>
-        <audio ref={audioRef} />
+        <audio 
+          ref={audioRef}
+          onTimeUpdate={() => {
+            setCurrentTime(audioRef.current.currentTime)
+          }}
+          onLoadedMetadata={() =>{
+            setDuration(audioRef.current.duration)
+          }}
+          />
       </main>
+      {currentSong && isPlayerOpen && (
       <PlayerBar 
         currentSong = {currentSong}
         isPlaying = {isPlaying}
         setIsPlaying = {setIsPlaying}
         audioRef = {audioRef}
+        currentTime = {currentTime}
+        duration = {duration}
       />
+      )}
     </div>
   )
 }
