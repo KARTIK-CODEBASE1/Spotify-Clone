@@ -7,7 +7,10 @@ function PlayerBar({
     setIsPlaying,
     audioRef,
     currentTime,
+    setCurrentTime,
     duration,
+    isClosing,
+    closePlayer,
 }) {
 
     const togglePlay = () => {
@@ -20,20 +23,31 @@ function PlayerBar({
         }
     }
 
-    console.log("where : ", currentTime)
-    console.log("total duration: ", duration)
-
     const formatTime = (time) =>{
+        if (!Number.isFinite(time)) {
+            return '0:00'
+        }
+
         const minutes = Math.floor(time/60)
         const seconds = Math.floor(time % 60)
 
-        return `${minutes} : ${seconds}`
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`
     }
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-50 h-34 border-t border-[#2a2a2a] bg-[#181818] px-6 animate-[slideUp_0.35s_ease]">
-            <div className="flex h-full items-center justify-between">
-                <div className="flex min-w-0 items-center gap-6">
+        <div className={`
+                fixed bottom-0 left-0 right-0 z-50 
+                border-t border-[#2a2a2a] 
+                bg-[#181818] px-4 py-4 md:px-6
+
+                ${isClosing
+                   ? 'animate-[slideDown_0.35s_ease]'
+                   : 'animate-[slideUp_0.35s_ease]'
+                }
+              `}
+        >
+            <div className="flex flex-col gap-4 md:flex-row md:items-center">
+                <div className="flex min-w-0 flex-1 items-center gap-4 md:gap-6">
 
                     {currentSong && (
                         <img
@@ -57,9 +71,9 @@ function PlayerBar({
 
                 </div>
 
-                <div className="flex flex-col items-center">
+                <div className="flex w-full flex-col items-center justify-center md:flex-1">
 
-                    <div className="flex items-center shrink-0 gap-2">
+                    <div className="flex items-center gap-2">
                         <button
                             type="button"
                             className={controlButtonClass}
@@ -108,27 +122,39 @@ function PlayerBar({
                             />
                         </button>
                     </div>
-                    <div className="flex items-center gap-3">
+                    <div className="mt-3 flex w-full md:max-w-xl items-center gap-3">
                         <span className="text-xs text-[#b3b3b3]">
                             {formatTime(currentTime)}
                         </span>
                         <input
                             type="range"
                             value={currentTime}
-                            max={duration}
+                            max={duration || 0}
+                            min="0"
                             step='0.1'
                             onChange={(event) => {
-                                audioRef.current.currentTime = event.target.value
-                                setCurrentTime(event.target.value)
+                                const nextTime = Number(event.target.value)
+                                audioRef.current.currentTime = nextTime
+                                setCurrentTime(nextTime)
                             }}
-                            className="w-96"
+                            className="h-1 flex-1 cursor-pointer appearance-none rounded-full bg-[#4d4d4d]"
 
                         />
                         <span className="text-xs text-[#b3b3b3]">
                             {formatTime(duration)}
                         </span>
-
                     </div>
+                </div>
+
+                <div className="flex-1 justify-end hidden md:flex">
+                    <button
+                        type="button"
+                        onClick={closePlayer}
+                        className="flex h-10 w-10 items-center justify-center rounded-full text-lg font-bold text-[#b3b3b3] transition duration-200 hover:bg-[#242424] hover:text-white cursor-pointer hidden md:block"
+                        aria-label="Close player"
+                    >
+                        X
+                    </button>
                 </div>
             </div>
         </div>

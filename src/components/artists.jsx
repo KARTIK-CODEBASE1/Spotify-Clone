@@ -49,7 +49,7 @@ function Artists({playSong}) {
 
                       event.stopPropagation()
 
-                      playSong(song)
+                      playSong(artist)
                     
                     }}
 

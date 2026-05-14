@@ -42,6 +42,7 @@ function CenterBar() {
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
   const [isPlayerOpen, setIsPlayerOpen] = useState(false)
+  const [isClosing, setIsClosing] = useState(false)
 
   const playSong = (song) => {
     setCurrentSong(song)
@@ -54,11 +55,18 @@ function CenterBar() {
 
   const closePlayer = () =>{
 
-    audioRef.current.pause()
+    setIsClosing(true)
 
-    setIsPlaying(false)
+    setTimeout(() =>{
 
-    setIsPlayerOpen(false)
+      audioRef.current.pause()
+
+      setIsPlaying(false)
+
+      setIsPlayerOpen(false)
+
+      setIsClosing(false)
+    }, 300)
   }
 
   return (
@@ -70,7 +78,6 @@ function CenterBar() {
       <main
         onScroll={(event) => setIsScrolled(event.currentTarget.scrollTop > 24)}
         className="relative flex-1 min-h-0 overflow-y-auto rounded-xl bg-[#121212]"
-        onClick={closePlayer}
       >
         <div
           className={`pointer-events-none sticky top-0 z-0 h-0 transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-90'
@@ -81,7 +88,7 @@ function CenterBar() {
           <div className="h-64 bg-[linear-gradient(180deg,rgba(75,51,136,0.95)_0%,rgba(49,36,89,0.82)_42%,rgba(18,18,18,0)_100%)]" />
         </div>
 
-        <div className="relative z-10 px-5 pb-32">
+        <div className="relative z-10 px-5 pb-52 mb:pb-32">
           <div
             className={`sticky top-0 z-20 -mx-5 px-5 pb-4 pt-5 transition-colors duration-300 ${isScrolled
               ? 'bg-[rgba(69,48,122,0.5)] backdrop-blur-sm'
@@ -174,7 +181,10 @@ function CenterBar() {
         setIsPlaying = {setIsPlaying}
         audioRef = {audioRef}
         currentTime = {currentTime}
+        setCurrentTime = {setCurrentTime}
         duration = {duration}
+        isClosing = {isClosing}
+        closePlayer = {closePlayer}
       />
       )}
     </div>

@@ -1,4 +1,4 @@
-import {useState } from 'react'
+import { useState } from 'react'
 
 const songSections = [
   {
@@ -80,10 +80,10 @@ const songSections = [
   },
 ]
 
-function SongCards({playSong}) {
+function SongCards({ playSong }) {
   const [showAll, setShowAll] = useState(false)
 
-  
+
 
   return (
     <>
@@ -119,7 +119,7 @@ function SongCards({playSong}) {
                       event.stopPropagation()
 
                       playSong(song)
-                      
+
                     }}
                     className="
                       h-16 w-16 shrink-0
@@ -140,7 +140,13 @@ function SongCards({playSong}) {
                   <button
                     type="button"
                     aria-label={`Play ${song.title}`}
-                    onClick={() => playSong(song)}
+                    onClick={(event) => {
+
+                      event.stopPropagation()
+
+                      playSong(song)
+
+                    }}
                     className="
                       absolute bottom-3 right-3
                       hidden h-14 w-14
@@ -178,7 +184,7 @@ function SongCards({playSong}) {
         </section>
       ))}
 
-      
+
     </>
   )
 }

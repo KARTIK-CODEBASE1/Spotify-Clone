@@ -6,11 +6,6 @@ const libraryCards = [
     description: "It's easy, we'll help you",
     action: 'Create playlist',
   },
-  {
-    title: "Let's find some podcasts to follow",
-    description: "We'll keep you updated on new episodes",
-    action: 'Browse podcasts',
-  },
 ]
 
 const footerLinks = [
