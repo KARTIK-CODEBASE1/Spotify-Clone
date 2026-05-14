@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 const iconFilter = { filter: 'brightness(0) invert(1)' }
 const controlButtonClass = 'flex h-10 w-10 items-center justify-center rounded-full bg-[#242424] transition duration-200 hover:scale-[1.05] hover:bg-[#2f2f2f] cursor-pointer'
 
@@ -11,9 +13,16 @@ function PlayerBar({
     duration,
     isClosing,
     closePlayer,
+    isLooping,
+    setIsLooping,
 }) {
 
+    const [touchStart, setTouchStart] = useState(0)
+
+
+
     const togglePlay = () => {
+
         if (isPlaying) {
             audioRef.current.pause()
             setIsPlaying(false)
@@ -23,28 +32,62 @@ function PlayerBar({
         }
     }
 
-    const formatTime = (time) =>{
+    const skipForward = () => {
+        audioRef.current.currentTime += 5
+        setCurrentTime(audioRef.current.currentTime)
+    }
+
+    const skipBackward = () => {
+        audioRef.current.currentTime -= 5
+        setCurrentTime(audioRef.current.currentTime)
+    }
+
+    const formatTime = (time) => {
         if (!Number.isFinite(time)) {
             return '0:00'
         }
 
-        const minutes = Math.floor(time/60)
+        const minutes = Math.floor(time / 60)
         const seconds = Math.floor(time % 60)
 
         return `${minutes}:${seconds.toString().padStart(2, '0')}`
     }
 
-    return (
-        <div className={`
-                fixed bottom-0 left-0 right-0 z-50 
-                border-t border-[#2a2a2a] 
-                bg-[#181818] px-4 py-4 md:px-6
+    const toogleLoop = () => {
 
-                ${isClosing
-                   ? 'animate-[slideDown_0.35s_ease]'
-                   : 'animate-[slideUp_0.35s_ease]'
+        audioRef.current.loop = !isLooping
+
+        setIsLooping = !isLooping
+    }
+
+    return (
+        <div
+            className={`
+        fixed bottom-0 left-0 right-0 z-50 
+        border-t border-[#2a2a2a] 
+        bg-[#181818] px-4 py-4 md:px-6
+
+        ${isClosing
+                    ? 'animate-[slideDown_0.35s_ease]'
+                    : 'animate-[slideUp_0.35s_ease]'
                 }
-              `}
+    `}
+
+            onTouchStart={(event) => {
+                setTouchStart(event.touches[0].clientY)
+            }}
+
+            onTouchEnd={(event) => {
+
+                const touchEnd = event.changedTouches[0].clientY
+
+                const distance = touchEnd - touchStart
+
+                if (distance > 120) {
+                    closePlayer()
+                }
+
+            }}
         >
             <div className="flex flex-col gap-4 md:flex-row md:items-center">
                 <div className="flex min-w-0 flex-1 items-center gap-4 md:gap-6">
@@ -78,11 +121,12 @@ function PlayerBar({
                             type="button"
                             className={controlButtonClass}
                             aria-label="Previous"
+                            onClick={skipBackward}
                         >
                             <img
-                                className="h-5 w-5 scale-[1.08]"
+                                className="h-6 w-6 scale-[1.08]"
                                 style={iconFilter}
-                                src="/Svg/player-controls/previous-button.svg"
+                                src="/Svg/player-controls/backward_5.svg"
                                 alt="Previous"
                             />
                         </button>
@@ -113,14 +157,36 @@ function PlayerBar({
                             type="button"
                             className={controlButtonClass}
                             aria-label="Next"
+                            onClick={skipForward}
                         >
                             <img
-                                className="h-5 w-5"
+                                className="h-6 w-6"
                                 style={iconFilter}
-                                src="/Svg/player-controls/next-button.svg"
+                                src="/Svg/player-controls/forward_5.svg"
                                 alt="Next"
                             />
                         </button>
+
+                        <button
+                            type="button"
+                            className={`
+                                ml-6 flex h-10 w-10 
+                                items-center justify-center rounded-full 
+                                bg-[#242424] transition duration-200 
+                                hover:scale-[1.05] hover:bg-[#2f2f2f] cursor-pointer
+                                ${isLooping ? 'opacity-100' : 'opacity-50'}
+                            `}
+                            aria-label="Next"
+                            onClick={toogleLoop}
+                        >
+                            <img
+                                className="h-6 w-6 "
+                                style={iconFilter}
+                                src="/Svg/player-controls/loop.svg"
+                                alt="Next"
+                            />
+                        </button>
+
                     </div>
                     <div className="mt-3 flex w-full md:max-w-xl items-center gap-3">
                         <span className="text-xs text-[#b3b3b3]">
@@ -137,7 +203,7 @@ function PlayerBar({
                                 audioRef.current.currentTime = nextTime
                                 setCurrentTime(nextTime)
                             }}
-                            className="h-1 flex-1 cursor-pointer appearance-none rounded-full bg-[#4d4d4d]"
+                            className="custom-slider h-1 flex-1 cursor-pointer appearance-none rounded-full"
 
                         />
                         <span className="text-xs text-[#b3b3b3]">
@@ -157,7 +223,7 @@ function PlayerBar({
                     </button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

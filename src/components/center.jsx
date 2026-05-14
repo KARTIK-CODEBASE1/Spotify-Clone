@@ -43,6 +43,7 @@ function CenterBar() {
   const [duration, setDuration] = useState(0)
   const [isPlayerOpen, setIsPlayerOpen] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
+  const [isLooping, setIsLooping] = useState(false)
 
   const playSong = (song) => {
     setCurrentSong(song)
@@ -185,6 +186,8 @@ function CenterBar() {
         duration = {duration}
         isClosing = {isClosing}
         closePlayer = {closePlayer}
+        isLooping = {isLooping}
+        setIsLooping = {setIsLooping}
       />
       )}
     </div>

@@ -45,6 +45,19 @@
   to {
     transform: translateY(100%);
   }
+
 }
 
+.custom-slider::-webkit-slider-thumb {
+  appearance: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 9999px;
+  background: white;
+  cursor: pointer; 
+}
+
+.custom-slider {
+  background: #4d4d4d;
+}
 
