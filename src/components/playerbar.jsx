@@ -17,9 +17,13 @@ function PlayerBar({
     setIsLooping,
 }) {
 
+    const [isSkippingForward, setIsSkippingForward] = useState(false)
+
+    const [isSkippingBackward, setIsSkippingBackward] = useState(false)
+
     const [touchStart, setTouchStart] = useState(0)
 
-
+    const progress = (currentTime / duration) * 100
 
     const togglePlay = () => {
 
@@ -33,13 +37,29 @@ function PlayerBar({
     }
 
     const skipForward = () => {
+
+        setIsSkippingForward(true)
+
         audioRef.current.currentTime += 5
+
         setCurrentTime(audioRef.current.currentTime)
+
+        setTimeout(() => {
+            setIsSkippingForward(false)
+        }, 500)
     }
 
     const skipBackward = () => {
+
+        setIsSkippingBackward(true)
+
         audioRef.current.currentTime -= 5
+
         setCurrentTime(audioRef.current.currentTime)
+
+        setTimeout(() => {
+            setIsSkippingBackward(false)
+        }, 500)
     }
 
     const formatTime = (time) => {
@@ -50,14 +70,14 @@ function PlayerBar({
         const minutes = Math.floor(time / 60)
         const seconds = Math.floor(time % 60)
 
-        return `${minutes}:${seconds.toString().padStart(2, '0')}`
+        return `${minutes} : ${seconds.toString().padStart(2, '0')}`
     }
 
     const toogleLoop = () => {
 
         audioRef.current.loop = !isLooping
 
-        setIsLooping = !isLooping
+        setIsLooping(!isLooping)
     }
 
     return (
@@ -93,11 +113,51 @@ function PlayerBar({
                 <div className="flex min-w-0 flex-1 items-center gap-4 md:gap-6">
 
                     {currentSong && (
-                        <img
-                            src={currentSong.cover || currentSong.image}
-                            alt=''
-                            className="h-14 w-14 rounded object-cover"
-                        />
+                        <div className="relative h-14 w-14">
+
+                            <img
+                                src={currentSong.cover || currentSong.image}
+                                alt=""
+                                className="h-full w-full rounded object-cover"
+                            />
+
+                            <div
+                                className={`
+                                    absolute
+                                    -bottom-2
+                                    -right-2
+                                    flex items-center justify-center
+                                    h-12 w-12
+                                    rounded-full
+                                    border border-[#333]
+                                    bg-black
+
+                                    ${isPlaying
+                                        ? 'animate-[spinDisk_4s_linear_infinite]'
+                                        : ''
+                                    }
+                                `}
+                            >
+
+                                <img
+                                    src={currentSong.cover || currentSong.image}
+                                    alt=""
+                                    className="h-10 w-10 rounded-full object-cover"
+                                />
+
+                                <div
+                                    className="
+                                        absolute
+                                        h-2.5 w-2.5
+                                        rounded-full
+                                        border border-[#666]
+                                        bg-black
+                                        "
+                                />
+
+                            </div>
+
+                        </div>
                     )}
 
                     {currentSong && (
@@ -119,7 +179,13 @@ function PlayerBar({
                     <div className="flex items-center gap-2">
                         <button
                             type="button"
-                            className={controlButtonClass}
+                            className={`
+                                ${controlButtonClass} 
+                                ${isSkippingBackward
+                                    ? 'bg-[#1db954] shadow-[0_0_18px_rgba(29,185,84,0.45)]'
+                                    : 'bg-[#242424]'
+                                }
+                                `}
                             aria-label="Previous"
                             onClick={skipBackward}
                         >
@@ -155,7 +221,13 @@ function PlayerBar({
                         </button>
                         <button
                             type="button"
-                            className={controlButtonClass}
+                            className={`
+                                     ${controlButtonClass}
+                                     ${isSkippingForward
+                                    ? 'bg-[#1db954] shadow-[0_0_18px_rgba(29,185,84,0.45)]'
+                                    : 'bg-[#242424]'
+                                }
+                                `}
                             aria-label="Next"
                             onClick={skipForward}
                         >
@@ -169,12 +241,16 @@ function PlayerBar({
 
                         <button
                             type="button"
+
                             className={`
-                                ml-6 flex h-10 w-10 
-                                items-center justify-center rounded-full 
-                                bg-[#242424] transition duration-200 
+                                ml-6 flex h-10 w-10
+                                items-center justify-center rounded-full
+                                transition duration-200
                                 hover:scale-[1.05] hover:bg-[#2f2f2f] cursor-pointer
-                                ${isLooping ? 'opacity-100' : 'opacity-50'}
+                                ${isLooping
+                                    ? 'bg-[#1db954] shadow-[0_0_18px_rgba(29,185,84,0.45)]'
+                                    : 'bg-[#242424]'
+                                }
                             `}
                             aria-label="Next"
                             onClick={toogleLoop}
@@ -202,6 +278,13 @@ function PlayerBar({
                                 const nextTime = Number(event.target.value)
                                 audioRef.current.currentTime = nextTime
                                 setCurrentTime(nextTime)
+                            }}
+                            style={{
+                                background: `linear-gradient(
+                                        to right,
+                                      #1db954 ${progress}%,
+                                      #ffffff ${progress}%
+                                )`
                             }}
                             className="custom-slider h-1 flex-1 cursor-pointer appearance-none rounded-full"
 
