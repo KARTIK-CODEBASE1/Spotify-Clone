@@ -1,18 +1,20 @@
-import {useState } from 'react'
-
 const artistSection = {
   title: 'Popular artists',
   items: [
     { name: 'Bad Bunny', image: '/Artist-cover/badbunny.webp', audio: '/music/bad-bunny.mp3'},
     { name: 'Taylor Swift', image: '/Artist-cover/taylor_swift.webp', audio: '/music/taylor-swift.mp3'},
     { name: 'The Weeknd', image: '/Artist-cover/theWeeknd.webp',audio: '/music/blinding-lights.mp3'},
-    { name: 'Drake', image: '/Artist-cover/Drake.jpg', audio: '/music/drake-what-did-i-miss.mp3'},
+    { name: 'Drake', image: '/Artist-cover/Drake.jpg', audio: '/music/NationalTreasure.mp3'},
     { name: 'Billie Eilish', image: '/Artist-cover/billie_eilish.webp', audio: '/music/billie-eilish.mp3'},
     { name: 'Kendrick Lamar', image: '/Artist-cover/kendrick_lamar.webp',audio: '/music/kendrick-lamar.mp3'},
   ],
 }
 
-function Artists({playSong}) {
+function Artists({
+  playSong, 
+  openArtist,
+  currentSong,
+}) {
 
     
   return (
@@ -49,7 +51,11 @@ function Artists({playSong}) {
 
                       event.stopPropagation()
 
-                      playSong(artist)
+                      if (currentSong?.audio !== artist.audio){
+                        playSong(artist)
+                      }
+
+                      openArtist(artist)
                     
                     }}
 

@@ -5,10 +5,10 @@ const songSections = [
     title: 'Trending songs',
     items: [
       {
-        title: 'DRAKE - WHAT DID I MISS',
+        title: 'National Treasure',
         artist: 'Drake',
-        cover: '/cover-art/what_did_i_miss.jpg',
-        audio: '/music/drake-what-did-i-miss.mp3',
+        cover: '/cover-art/iceman2.jpg',
+        audio: '/music/NationalTreasure.mp3',
       },
       {
         title: 'Billie Eilish, Khalid - lovely',

@@ -83,15 +83,15 @@ function PlayerBar({
     return (
         <div
             className={`
-        fixed bottom-0 left-0 right-0 z-50 
-        border-t border-[#2a2a2a] 
-        bg-[#181818] px-4 py-4 md:px-6
+                    fixed bottom-0 left-0 right-0 z-50 
+                    border-t border-[#2a2a2a] 
+                    bg-[#181818] px-4 py-4 md:px-6
 
-        ${isClosing
-                    ? 'animate-[slideDown_0.35s_ease]'
-                    : 'animate-[slideUp_0.35s_ease]'
-                }
-    `}
+                    ${isClosing
+                                ? 'animate-[slideDown_0.35s_ease]'
+                                : 'animate-[slideUp_0.35s_ease]'
+                    }
+            `}
 
             onTouchStart={(event) => {
                 setTouchStart(event.touches[0].clientY)
@@ -122,21 +122,26 @@ function PlayerBar({
                             />
 
                             <div
-                                className={`
-                                    absolute
-                                    -bottom-2
-                                    -right-2
-                                    flex items-center justify-center
-                                    h-12 w-12
-                                    rounded-full
-                                    border border-[#333]
-                                    bg-black
+                                className="
+                                        absolute
+                                        -bottom-2
+                                        -right-2
 
-                                    ${isPlaying
-                                        ? 'animate-[spinDisk_4s_linear_infinite]'
-                                        : ''
-                                    }
-                                `}
+                                        flex items-center justify-center
+
+                                        h-12 w-12
+
+                                        rounded-full                                        
+                                        border border-[#333]
+
+                                        bg-black
+
+                                        animate-[spinDisk_4s_linear_infinite]
+                                    "
+
+                                style={{
+                                    animationPlayState: isPlaying ? 'running' : 'paused'
+                                }}
                             >
 
                                 <img
@@ -147,12 +152,12 @@ function PlayerBar({
 
                                 <div
                                     className="
-                                        absolute
-                                        h-2.5 w-2.5
-                                        rounded-full
-                                        border border-[#666]
-                                        bg-black
-                                        "
+                                            absolute
+                                            h-2.5 w-2.5
+                                            rounded-full
+                                            border border-[#666]
+                                            bg-black
+                                    "
                                 />
 
                             </div>
