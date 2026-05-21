@@ -8,6 +8,13 @@
 
   #root {
     min-height: 100vh;
+    width: 100%;
+  }
+
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
   }
 
   html {
@@ -19,6 +26,7 @@
     min-width: 320px;
     background: #000;
     font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
   }
 
   button,

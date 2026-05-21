@@ -90,27 +90,27 @@ function SongCards({ playSong }) {
       {songSections.map((section) => (
         <section key={section.title}>
           <div className="flex items-end justify-between gap-4">
-            <h2 className="ml-4 text-2xl font-extrabold text-white">
+            <h2 className="ml-2 text-xl font-extrabold text-white sm:ml-4 sm:text-2xl">
               {section.title}
             </h2>
 
             <button
               type="button"
               onClick={() => setShowAll(!showAll)}
-              className="cursor-pointer pt-3 font-bold text-[#b3b3b3] transition duration-200 hover:text-white"
+              className="cursor-pointer pt-3 text-sm font-bold text-[#b3b3b3] transition duration-200 hover:text-white sm:text-base"
             >
               {showAll ? 'Show less' : 'Show all'}
             </button>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-6">
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:mt-8 sm:gap-4 md:grid-cols-3 xl:grid-cols-6">
             {(showAll
               ? section.items
               : section.items.slice(0, 6)
             ).map((song) => (
               <article
                 key={song.title}
-                className="group flex flex-row gap-3 rounded-xl p-3 transition duration-200 hover:bg-[rgba(255,255,255,0.06)] md:flex-col"
+                className="group flex flex-row gap-3 rounded-xl p-2.5 transition duration-200 hover:bg-[rgba(255,255,255,0.06)] sm:p-3 md:flex-col"
               >
                 <div className="relative">
                   <div
@@ -174,7 +174,7 @@ function SongCards({ playSong }) {
                     {song.title}
                   </h3>
 
-                  <div className="mt-1 flex items-start gap-2 text-sm text-[#b3b3b3] md:mt-2 md:text-base">
+                  <div className="mt-1 flex items-start gap-2 text-xs text-[#b3b3b3] sm:text-sm md:mt-2 md:text-base">
                     <p className="line-clamp-2">{song.artist}</p>
                   </div>
                 </div>

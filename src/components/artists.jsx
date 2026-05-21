@@ -11,9 +11,7 @@ const artistSection = {
 }
 
 function Artists({
-  playSong, 
   openArtist,
-  currentSong,
 }) {
 
     
@@ -25,7 +23,7 @@ function Artists({
         </h2>
       </div>
 
-      <div className="mt-8 grid gap-3 grid-cols-2 md:grid-cols-3 xl:grid-cols-6 ">
+      <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 md:grid-cols-3 xl:grid-cols-6 ">
         {artistSection.items.map((artist) => (
           <article
             key={artist.name}
@@ -47,15 +45,11 @@ function Artists({
               >
                 {artist.image ? (
                   <img
-                    onClick={(event) => {
+                    onClick={async (event) => {
 
                       event.stopPropagation()
 
-                      if (currentSong?.audio !== artist.audio){
-                        playSong(artist)
-                      }
-
-                      openArtist(artist)
+                      await openArtist(artist)
                     
                     }}
 
@@ -68,8 +62,8 @@ function Artists({
               </div>
             </div>
 
-            <h3 className="mt-4 text-2xl font-bold text-white">{artist.name}</h3>
-            <p className="mt-2 text-lg text-[#b3b3b3]">Artist</p>
+            <h3 className="mt-3 text-lg font-bold text-white sm:mt-4 sm:text-2xl">{artist.name}</h3>
+            <p className="mt-1 text-sm text-[#b3b3b3] sm:mt-2 sm:text-lg">Artist</p>
           </article>
         ))}
       </div>

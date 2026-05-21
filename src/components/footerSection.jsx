@@ -29,7 +29,7 @@ const footerSection = {
 
 function FooterSection() {
   return (
-    <footer className="mt-20 border-t border-[#2a2a2a] text-[#b3b3b3]">
+    <footer className="mt-16 border-t border-[#2a2a2a] text-[#b3b3b3] sm:mt-20">
       <section className="grid gap-x-6 gap-y-8 pt-10 lg:grid-cols-5">
         {footerSection.content.map((group) => (
           <div key={group.heading}>
@@ -44,7 +44,7 @@ function FooterSection() {
           </div>
         ))}
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 md:justify-start">
           <button
             type="button"
             aria-label="Instagram"
@@ -86,8 +86,8 @@ function FooterSection() {
         </div>
       </section>
 
-      <div className="mt-8 border-t border-[#2a2a2a] pt-7 text-sm">
-        Â© Spotify-Clone 2026
+      <div className="mt-8 border-t border-[#2a2a2a] pb-4 pt-7 text-sm">
+        MusicApp 2026
       </div>
     </footer>
   )

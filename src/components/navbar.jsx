@@ -22,9 +22,9 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="px-2 py-2">
-      <nav className="flex flex-wrap items-center justify-between ">
-        <div className="flex flex-wrap items-center gap-4">
+    <header className="min-w-0 px-2 py-2 sm:px-2">
+      <nav className="flex min-w-0 flex-wrap items-center justify-between gap-2">
+        <div className="flex min-w-0 flex-wrap items-center gap-4">
 
           <div className="flex items-center gap-1">
             <img
@@ -174,7 +174,7 @@ function Navbar() {
             Log in
           </button>
         </div>
-        <div className="flex items-center gap-6 md:hidden">
+        <div className="flex shrink-0 items-center gap-3 sm:gap-4 md:hidden">
 
           <button
             type="button"
@@ -184,7 +184,7 @@ function Navbar() {
                 '_blank'
               )
             }
-            className="rounded-full bg-white px-3 py-0.5 text-base font-bold text-black"
+            className="rounded-full bg-white px-3 py-1 text-sm font-bold text-black sm:text-base"
           >
             Open App
           </button>
@@ -214,7 +214,7 @@ function Navbar() {
           <div
             className={`
               fixed top-0 right-0
-              h-full w-[280px]
+              h-full w-[min(82vw,280px)]
               bg-[#121212]
               z-50
               transform transition-transform duration-300

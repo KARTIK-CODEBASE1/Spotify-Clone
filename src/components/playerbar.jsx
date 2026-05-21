@@ -23,9 +23,10 @@ function PlayerBar({
 
     const [touchStart, setTouchStart] = useState(0)
 
-    const progress = (currentTime / duration) * 100
+    const progress = duration > 0 ? (currentTime / duration) * 100 : 0
 
     const togglePlay = () => {
+        if (!audioRef.current) return
 
         if (isPlaying) {
             audioRef.current.pause()
@@ -37,6 +38,7 @@ function PlayerBar({
     }
 
     const skipForward = () => {
+        if (!audioRef.current) return
 
         setIsSkippingForward(true)
 
@@ -50,6 +52,7 @@ function PlayerBar({
     }
 
     const skipBackward = () => {
+        if (!audioRef.current) return
 
         setIsSkippingBackward(true)
 
@@ -74,9 +77,6 @@ function PlayerBar({
     }
 
     const toogleLoop = () => {
-
-        audioRef.current.loop = !isLooping
-
         setIsLooping(!isLooping)
     }
 
@@ -85,7 +85,8 @@ function PlayerBar({
             className={`
                     fixed bottom-0 left-0 right-0 z-50 
                     border-t border-[#2a2a2a] 
-                    bg-[#181818] px-4 py-4 md:px-6
+                    bg-[#181818] px-3 py-3 sm:px-4 sm:py-4 md:px-6
+                    overflow-x-hidden
 
                     ${isClosing
                                 ? 'animate-[slideDown_0.35s_ease]'
@@ -109,11 +110,11 @@ function PlayerBar({
 
             }}
         >
-            <div className="flex flex-col gap-4 md:flex-row md:items-center">
-                <div className="flex min-w-0 flex-1 items-center gap-4 md:gap-6">
+            <div className="flex flex-col gap-3 md:flex-row md:items-center">
+                <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4 md:gap-6">
 
                     {currentSong && (
-                        <div className="relative h-14 w-14">
+                        <div className="relative h-12 w-12 sm:h-14 sm:w-14">
 
                             <img
                                 src={currentSong.cover || currentSong.image}
@@ -129,7 +130,8 @@ function PlayerBar({
 
                                         flex items-center justify-center
 
-                                        h-12 w-12
+                                        h-10 w-10
+                                        sm:h-12 sm:w-12
 
                                         rounded-full                                        
                                         border border-[#333]
@@ -147,7 +149,7 @@ function PlayerBar({
                                 <img
                                     src={currentSong.cover || currentSong.image}
                                     alt=""
-                                    className="h-10 w-10 rounded-full object-cover"
+                                    className="h-8 w-8 rounded-full object-cover sm:h-10 sm:w-10"
                                 />
 
                                 <div
@@ -167,11 +169,11 @@ function PlayerBar({
 
                     {currentSong && (
                         <div className="min-w-0">
-                            <h3 className="truncate font-black text-white">
+                            <h3 className="truncate text-sm font-black text-white sm:text-base">
                                 {currentSong.title || currentSong.name}
                             </h3>
 
-                            <p className="truncate text-sm text-[#b3b3b3]">
+                            <p className="truncate text-xs text-[#b3b3b3] sm:text-sm">
                                 {currentSong.artist || 'Artist'}
                             </p>
                         </div>
@@ -181,7 +183,7 @@ function PlayerBar({
 
                 <div className="flex w-full flex-col items-center justify-center md:flex-1">
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 sm:gap-2.5">
                         <button
                             type="button"
                             className={`
@@ -248,7 +250,8 @@ function PlayerBar({
                             type="button"
 
                             className={`
-                                ml-6 flex h-10 w-10
+                                ml-2 flex h-10 w-10
+                                sm:ml-6
                                 items-center justify-center rounded-full
                                 transition duration-200
                                 hover:scale-[1.05] hover:bg-[#2f2f2f] cursor-pointer
