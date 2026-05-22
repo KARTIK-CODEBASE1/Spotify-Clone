@@ -4,24 +4,42 @@ const footerSection = {
   content: [
     {
       heading: 'Company',
-      items: ['About', 'Jobs', 'For the Record'],
+      items: [
+        { label: 'About', href: 'https://www.spotify.com/in-en/about-us/contact/' },
+        { label: 'Jobs', href: 'https://www.lifeatspotify.com/' },
+        { label: 'For the Record', href: 'https://newsroom.spotify.com/' },
+      ],
     },
     {
       heading: 'Communities',
-      items: ['For Artists', 'Developers', 'Advertising', 'Investors', 'Vendors'],
+      items: [
+        { label: 'For Artists', href: 'https://artists.spotify.com/' },
+        { label: 'Developers', href: 'https://developer.spotify.com/' },
+        { label: 'Advertising', href: 'https://ads.spotify.com/en-IN/' },
+        { label: 'Investors', href: 'https://investors.spotify.com/' },
+        { label: 'Vendors', href: 'https://www.spotify.com/in-en/for-vendors/' },
+      ],
     },
     {
       heading: 'Useful Links',
-      items: ['Support', 'Free Mobile App', 'Popular by Country', 'Import your music'],
+      items: [
+        { label: 'Support', href: 'https://support.spotify.com/in-en/' },
+        {
+          label: 'Free Mobile App',
+          href: 'https://play.google.com/store/apps/details?id=com.spotify.music',
+        },
+        { label: 'Popular by Country', href: 'https://open.spotify.com/genre' },
+        { label: 'Import your music', href: 'https://support.spotify.com/in-en/article/local-files/' },
+      ],
     },
     {
       heading: 'Spotify Plans',
       items: [
-        'Premium Lite',
-        'Premium Standard',
-        'Premium Platinum',
-        'Premium Student',
-        'Spotify Free',
+        { label: 'Premium Lite', href: 'https://www.spotify.com/in-en/premium/' },
+        { label: 'Premium Standard', href: 'https://www.spotify.com/in-en/premium/' },
+        { label: 'Premium Platinum', href: 'https://www.spotify.com/in-en/premium/' },
+        { label: 'Premium Student', href: 'https://www.spotify.com/in-en/student/' },
+        { label: 'Spotify Free', href: 'https://www.spotify.com/in-en/free/' },
       ],
     },
   ],
@@ -36,17 +54,25 @@ function FooterSection() {
             <h3 className="text-base font-bold text-white">{group.heading}</h3>
             <div className="mt-4 space-y-2 text-sm">
               {group.items.map((item) => (
-                <p key={item} className="cursor-pointer hover:text-white">
-                  {item}
-                </p>
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block cursor-pointer hover:text-white"
+                >
+                  {item.label}
+                </a>
               ))}
             </div>
           </div>
         ))}
 
         <div className="flex gap-4 md:justify-start">
-          <button
-            type="button"
+          <a
+            href="https://www.instagram.com/spotify/"
+            target="_blank"
+            rel="noreferrer"
             aria-label="Instagram"
             className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1f1f1f] text-sm font-bold transition duration-200 hover:bg-[#2a2a2a]"
           >
@@ -56,10 +82,12 @@ function FooterSection() {
               src="/Svg/center-elements/instagram-svgrepo-com.svg"
               alt=""
             />
-          </button>
+          </a>
 
-          <button
-            type="button"
+          <a
+            href="https://x.com/spotify"
+            target="_blank"
+            rel="noreferrer"
             aria-label="Twitter"
             className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1f1f1f] text-sm font-bold transition duration-200 hover:bg-[#2a2a2a]"
           >
@@ -69,10 +97,12 @@ function FooterSection() {
               src="/Svg/center-elements/twitter-social-logotype-svgrepo-com.svg"
               alt=""
             />
-          </button>
+          </a>
 
-          <button
-            type="button"
+          <a
+            href="https://www.facebook.com/Spotify"
+            target="_blank"
+            rel="noreferrer"
             aria-label="Facebook"
             className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#1f1f1f] text-sm font-bold transition duration-200 hover:bg-[#2a2a2a]"
           >
@@ -82,7 +112,7 @@ function FooterSection() {
               src="/Svg/center-elements/facebook-svgrepo-com.svg"
               alt=""
             />
-          </button>
+          </a>
         </div>
       </section>
 
