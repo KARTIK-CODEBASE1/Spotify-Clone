@@ -1,33 +1,47 @@
-# Spotify Clone
+# Sonique Player
 
-A modern Spotify-inspired music streaming UI built with React and Tailwind CSS featuring responsive layouts, real audio playback, interactive animations, and mobile-friendly controls.
+Sonique Player is a cinematic Spotify-inspired music experience built with React and Tailwind CSS.  
+The project focuses on immersive UI, smooth audio interactions, animated transitions, and a modern mobile-first listening experience.
+
+## Live Demo
+
+Add your deployed link here.
 
 ---
 
 ## Features
 
-### Audio Player
-- Centralized audio playback system
-- Play / Pause functionality
-- 5-second forward & backward seek controls
-- Interactive progress seek bar
+### Audio Experience
+- Real audio playback support
+- Interactive seek bar
 - Loop mode support
-- Dynamic playback progress styling
-- Real audio integration
+- Animated spinning vinyl disk
+- Smooth play/pause transitions
+- Mobile swipe-to-close player interaction
 
-### UI & Animations
-- Animated floating player bar
-- Smooth slide-up / slide-down player transitions
-- Spinning vinyl disk animation while music plays
-- Responsive mobile + desktop layouts
-- Hover animations and interaction feedback
-- Mobile swipe-down gesture to close player
+### Artist Spotlight
+- Cinematic artist modal
+- Dynamic artist data using Last.fm API
+- Artist tags and listener statistics
+- Background blur effects
+- Animated glowing modal borders
+- Audio muffling effect using Web Audio API
+- Smooth open/close animations
 
-### Content
-- Interactive song cards
-- Artist cards
-- Responsive sidebar navigation
-- Mobile hamburger menu
+### UI & UX
+- Fully responsive mobile + desktop layout
+- Sticky gradient navigation
+- Hover animations and transitions
+- Mobile fullscreen artist modal
+- Touch-optimized interactions
+- External Spotify redirects
+
+### Architecture
+- Custom React hooks for audio management
+- Centralized audio state system
+- Modular component structure
+- Async API integration
+- Production deployment workflow
 
 ---
 
@@ -36,22 +50,19 @@ A modern Spotify-inspired music streaming UI built with React and Tailwind CSS f
 - React
 - Tailwind CSS
 - Vite
+- Last.fm API
+- Web Audio API
+- Netlify
 
 ---
 
 ## Installation
 
 ```bash
+git clone <your-repository-url>
+
+cd sonique-player
+
 npm install
+
 npm run dev
-```
-
----
-
-## Future Improvements
-
-- Lyrics integration
-- Artist information modal
-- Music APIs integration
-- Queue & playlist system
-- Advanced mobile player interactions
