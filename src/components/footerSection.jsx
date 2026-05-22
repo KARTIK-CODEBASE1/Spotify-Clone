@@ -117,7 +117,7 @@ function FooterSection() {
       </section>
 
       <div className="mt-8 border-t border-[#2a2a2a] pb-4 pt-7 text-sm">
-        MusicApp 2026
+        SONIQUE 2026
       </div>
     </footer>
   )

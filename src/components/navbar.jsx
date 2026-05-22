@@ -47,13 +47,12 @@ function Navbar() {
             >
               <img
                 className="h-12 w-12 shrink-0"
-                style={iconFilter}
-                src="/Svg/navbar-elements/spotify-logo.svg"
-                alt="Spotify"
+                src="/Svg/navbar-elements/sonique.svg"
+                alt="SONIQUE"
               />
 
               <span className="font-black tracking-tight md:hidden">
-                Spotify
+                SONIQUE
               </span>
             </a>
           </div>
