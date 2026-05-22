@@ -86,7 +86,7 @@ function PlayerBar({
                     fixed bottom-0 left-0 right-0 z-50 
                     border-t border-[#2a2a2a] 
                     bg-[#181818] px-3 py-3 sm:px-4 sm:py-4 md:px-6
-                    overflow-x-hidden
+                    overflow-x-hidden touch-none
 
                     ${isClosing
                                 ? 'animate-[slideDown_0.35s_ease]'

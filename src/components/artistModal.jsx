@@ -62,7 +62,7 @@ function ArtistModal({
             -inset-1
             rounded-[28px]
             opacity-70
-            blur-xl
+            blur-lg
             animate-[artistGlow_10s_linear_infinite]
             bg-[conic-gradient(from_0deg,#1db954,#7c3aed,#1db954,#2563eb,#1db954)]
           "
@@ -74,7 +74,7 @@ function ArtistModal({
             -inset-[2px]
             rounded-[28px]
             opacity-80
-            blur-md
+            blur-sm
             bg-[linear-gradient(130deg,#1db954,#7c3aed,#2563eb,#1db954)]
             bg-[length:300%_300%]
             animate-[artistBorderFlow_8s_ease_infinite]
@@ -178,7 +178,7 @@ function ArtistModal({
               bg-[rgba(0,0,0,0.45)]
               items-center justify-center
               rounded-full
-              backdrop-blur-md
+              backdrop-blur-sm
               text-xl font-bold text-white
               transition duration-200
               hover:bg-[#2a2a2a]
