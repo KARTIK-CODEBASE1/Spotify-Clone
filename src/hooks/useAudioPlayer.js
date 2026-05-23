@@ -10,8 +10,10 @@ export default function useAudioPlayer() {
     const [isClosing, setIsClosing] = useState(false)
     const [isLooping, setIsLooping] = useState(false)
     const [previousSong, setPreviousSong] = useState(null)
+    const [wasPlayingBeforeArtist, setWasPlayingBeforeArtist] = useState(false)
     const [previousTime, setPreviousTime] = useState(0)
     const [isArtistClosing, setIsArtistClosing] = useState(false)
+
 
     const audioRef = useRef(null)
     const audioContextRef = useRef(null)
@@ -85,11 +87,16 @@ export default function useAudioPlayer() {
             if (currentSong && audioRef.current) {
                 setPreviousSong(currentSong)
                 setPreviousTime(audioRef.current.currentTime)
+                setWasPlayingBeforeArtist(isPlaying)
             }
 
             await playSong(artist)
         }
 
+        if(isSameArtist && audioRef.current.paused) {
+            audioRef.current.play()
+            setIsPlaying(true)
+        }
         setSelectedArtist(artist)
     }
 
@@ -101,8 +108,15 @@ export default function useAudioPlayer() {
             setIsArtistClosing(false)
 
             if (previousSong) {
-                await playSong(previousSong)
-                audioRef.current.currentTime = previousTime
+                if(wasPlayingBeforeArtist){
+                    await playSong(previousSong)
+                    audioRef.current.currentTime = previousTime
+                } else {
+                    setCurrentSong(previousSong)
+                    audioRef.current.src = previousSong.audio
+                    audioRef.current.currentTime = previousTime
+                    setIsPlaying(false)
+                }
                 setPreviousSong(null)
             }
         }, 300)
